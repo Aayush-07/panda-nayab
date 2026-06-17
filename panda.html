@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panda Search Mission</title>
+
+<style>
+body{
+    margin:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#fff8f8;
+    font-family:Arial, sans-serif;
+    overflow:hidden;
+}
+
+.container{
+    text-align:center;
+}
+
+h1{
+    font-size:2.2rem;
+    color:#333;
+    margin-bottom:40px;
+}
+
+button{
+    padding:15px 30px;
+    font-size:18px;
+    border:none;
+    border-radius:12px;
+    cursor:pointer;
+    margin:10px;
+}
+
+#yesBtn{
+    background:#ff7aa2;
+    color:white;
+}
+
+#noBtn{
+    background:#ddd;
+    position:absolute;
+}
+
+#result{
+    display:none;
+    text-align:center;
+}
+
+.panda{
+    font-size:150px;
+}
+
+.message{
+    font-size:2rem;
+    margin-top:20px;
+    color:#ff5c8a;
+}
+</style>
+</head>
+<body>
+
+<div id="question" class="container">
+    <h1>🐼 Meri Panda kho gayi hai,<br>kya tumne usse dekha hai?</h1>
+
+    <button id="yesBtn">Mai hi Panda hu</button>
+    <button id="noBtn">Mai Panda nahi hu</button>
+</div>
+
+<div id="result">
+    <div class="panda">🐼</div>
+    <div class="message">Ha pata hai mujhe 🤍</div>
+</div>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+
+function moveButton() {
+    const maxX = window.innerWidth - noBtn.offsetWidth - 20;
+    const maxY = window.innerHeight - noBtn.offsetHeight - 20;
+
+    noBtn.style.left = Math.random() * maxX + "px";
+    noBtn.style.top = Math.random() * maxY + "px";
+}
+
+moveButton();
+
+noBtn.addEventListener("mouseover", moveButton);
+noBtn.addEventListener("click", moveButton);
+
+document.getElementById("yesBtn").addEventListener("click", () => {
+    document.getElementById("question").style.display = "none";
+    document.getElementById("result").style.display = "block";
+});
+</script>
+
+</body>
+</html>
